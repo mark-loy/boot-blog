@@ -1,0 +1,68 @@
+server:
+  port: 6001
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://192.168.166.128:3306/cloud_blog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: 192.168.166.128
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+  mail:
+    host: smtp.163.com
+    username: muaker@163.com
+    password: KBYCVXXLRZGMZNJS
+    port: 25
+    protocol: smtp
+    default-encoding: utf-8
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com/mark/*/mapper/xml/*.xml
+
+aliyun:
+  endpoint: oss-cn-beijing.aliyuncs.com
+  accessKeyId: LTAI4GHRz68KqbqfrrFeWufk
+  accessKeySecret: sl8OlNPFuY9kGljvavTp7IcqCuGNfS
+  oss:
+    bucketName: marker-fileupload
+    filePatten: images/muke/blog/dev
+
+blog:
+  article:
+    hotConditionVal: 100
+
+site:
+  subject: 木可个人博客网站
+  siteUrl: http://localhost
+
+third:
+  login:
+    github:
+      clientId: 59893b9eaeab2f071f91
+      secret: 469abc49468b0038922760f9ea751def5cea2b78
+      redirectUrl: http://localhost:6001/api/ucenter/login/github/callback
+    gitee:
+      clientId: 942924a45398a460db7020fa5524c6b0e956213b55843eff3fe111836c8f27f1
+      secret: 026a320312744ddb8259d576a429a5a6b3e7521c8539807844f12fc04d03cbf8
+      redirectUrl: http://localhost:6001/api/ucenter/login/gitee/callback
